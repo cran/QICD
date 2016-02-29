@@ -1,0 +1,6 @@
+useDynLib("QICD")
+exportPattern("^[[:alpha:]]+")
+exportPattern(".")
+import(stats)
+import(parallel)
+importFrom("graphics", "lines", "plot")
