@@ -21,7 +21,7 @@ response variable. should be a numerical vector
 input matrix, of dimension nobs x nvars; each row is an observation vector. In high dimensional cases, nvars could be larger than nobs
 }
   \item{beta}{
-initial value of coefficients. A numberical vector, with length of p if intercept is not included, and length of p+1 if intercept is included, where p is the data dimention. The default value of beta is NULL, so an appropriate vector will be given automatically
+initial value of coefficients. A numberical vector, with length of p if intercept is not included, and length of p+1 if intercept is included as the last entry, where p is the data dimention. The default value of beta is NULL, so an appropriate vector will be given automatically
 }
   \item{tau}{
 quantile parameter in quantile regression. A numerical value between 0 and 1.
@@ -33,7 +33,7 @@ a user supplied \code{lambda} sequence. A numerical vector.
 an unknown parameter in SCAD and MCD penalty functions. The default value is 3.7, suggested by Fan and Li (2001). 
 }
   \item{funname}{
-nonconvex penalty function names. Character vector, which can be scad and mcp. 
+penalty function names. Character vector, which can be scad, mcp and lasso. 
 }
   \item{intercept}{
 Should intercept(s) be fitted (default=TRUE) or set to zero (FALSE). Default value is TRUE.
@@ -63,7 +63,7 @@ An object with a list \code{QICD}.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 \item{beta_final }{
-a matrix of coefficients. If intercept is included, diminsion is (p+1) x nlambda, where nlamba is the length of \code{lambda} vector; if intercept is not included, diminsion is p x nlambda.
+a matrix of coefficients. If intercept is included, diminsion is (p+1) x nlambda with the last row to be the intercepts, where nlamba is the length of \code{lambda} vector; if intercept is not included, diminsion is p x nlambda.
 }
 \item{lambda }{
 the actual sequence of \code{lambda} values used

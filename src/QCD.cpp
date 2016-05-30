@@ -29,7 +29,7 @@ void QCD(double *y, double *x, double *beta0, double *beta1,double *pre_value, i
 //y is the response variable, nx1 vector; x is the predictor, nx(p+1) matrix; beta0 is the initial value of coefficients, (p+1)x1 vector ;
 //beta1 will be the final value of coefficients, (p+1)x1 vector; pre_value is the vector to calculate the weighted median,nx1 vector,x%*%beta;
 //nyrow is the length of y, which is n; nxcol is the number of columns of x, which is p+1; tao is the quantile number; lambda is the tuning 
-//parameter; a is another parameter for SCAD and MCP penalties; index is the indicator for penalty types, 1 for SCAD, 2 for MCP.
+//parameter; a is another parameter for SCAD and MCP penalties; index is the indicator for penalty types, 0 for SCAD, 1 for MCP and 2 for LASSO.
 //index1 is the intercept indicator, 1 for including intercept, 0 for without intercept
 //thresh is the convergence threshold
 //maxin is maximal iteration numbers

@@ -73,7 +73,11 @@ QICD<-function(y, x, beta=NULL, tau, lambda, a=3.7,funname="scad",intercept=TRUE
   df=NULL
   #none zero numbers for coefficients
   for (j in 1:nlambda){
-    beta1=beta
+    if(j==1){
+      beta1=beta
+    }else{
+      beta1=beta_temp[!exclude]
+    }
     i=0
     repeat{
       beta0<-beta1

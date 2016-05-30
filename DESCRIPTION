@@ -2,8 +2,8 @@ Package: QICD
 Type: Package
 Title: Estimate the Coefficients for Non-Convex Penalized Quantile
         Regression Model by using QICD Algorithm
-Version: 1.0.1
-Date: 2016-02-28
+Version: 1.1.1
+Date: 2016-05-29
 Authors@R: c(person("Bo", "Peng", role = c("aut", "cre"),
 		     email = "peng0199@umn.edu"),
 	      person("Rondall", "E. Jones", role = "ctb"),
@@ -28,7 +28,7 @@ Description: Extremely fast algorithm "QICD", Iterative Coordinate
 License: GPL-2
 URL:
         http://www.tandfonline.com/doi/abs/10.1080/10618600.2014.913516#.VsoK-JMrJp8
-Packaged: 2016-02-29 17:31:03 UTC; root
+Packaged: 2016-05-29 22:54:16 UTC; bopeng
 NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2016-02-29 23:29:52
+Date/Publication: 2016-05-30 06:29:37

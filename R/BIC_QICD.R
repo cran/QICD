@@ -37,19 +37,22 @@ QICD.BIC<-function(y, x, beta=NULL, const=6, tau, lambda, a=3.7,funname="scad",i
 #plot.off: control a plot.Default is False, if TRUE, a plot will be given
 #...: arguments could be passed to plot
 {
+  if(funname!="scad" & funname!="mcp"){
+    stop("Only non-convex penalty functions for HBIC")
+  }
   HBIC=NULL
   nzero=NULL
   nlambda=length(lambda)
   n=dim(x)[1]
+  res=QICD(y,x,tau=tau,beta=beta,lambda=lambda,a=a,funname=funname,
+           intercept=intercept,thresh=thresh,maxin=maxin,maxout=maxout)
   for (j in 1:nlambda){
-    res=QICD(y,x,tau=tau,beta=beta,lambda=lambda[j],a=a,funname=funname,
-                   intercept=intercept,thresh=thresh,maxin=maxin,maxout=maxout)
-    beta=res$beta_final
+    beta=res$beta_final[,j]
     if (intercept)
       HBIC=c(HBIC,QBIC(y,cbind(x,rep(1,n)),beta,tau,const))
     else
       HBIC=c(HBIC,QBIC(y,x,beta,tau,const))
-    nzero=c(nzero,res$df)
+    nzero=c(nzero,res$df[j])
   }
   HBIC.min=min(HBIC)
   #HBICsd=sd(HBIC)
