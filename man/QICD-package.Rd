@@ -14,8 +14,8 @@ chosen by both k-fold cross validation and high dimensional BIC for quantile reg
 \tabular{ll}{
 Package: \tab QICD\cr
 Type: \tab Package\cr
-Version: \tab 1.1\cr
-Date: \tab 2016-05-29\cr
+Version: \tab 1.2\cr
+Date: \tab 2017-04-16\cr
 License: \tab GPL-2\cr
 }
 This is a package to utilize the QICD algorithm on penalized quantile regression. Accepts \code{x,y, lambda} as predictor matrix, response variable and tuning parameter. Three main functions are included:

@@ -1,11 +1,12 @@
 #source("QICD.R")
+#' @export
 checkloss<-function(res,tau=0.5) {
   # the check loss function for quantile regression
   Pres=(res+abs(res))/2
   Nres=(res-abs(res))/2
   return(tau*Pres-(1-tau)*Nres)
 }
-
+#' @export
 QICD.cv<-function(y, x, beta=NULL, tau, lambda,nfolds=10, a=3.7,funname="scad",intercept=TRUE,thresh=1e-06,
                maxin=100,maxout=20,mc.cores=getOption("mc.cores", 1L),plot.off=F,...)
 #x: input nxp matrix, of dimension nobs x nvars; each row is an observation vector. 

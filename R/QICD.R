@@ -2,6 +2,7 @@
 #{
 #  library.dynam("LIBNAME", pkg, lib)
 #}
+#' @export
 QICD<-function(y, x, beta=NULL, tau, lambda, a=3.7,funname="scad",intercept=TRUE,thresh=1e-06,
                exclude=NULL,maxin=100,maxout=20)
 #x: input nxp matrix, of dimension nobs x nvars; each row is an observation vector. 
@@ -50,12 +51,14 @@ QICD<-function(y, x, beta=NULL, tau, lambda, a=3.7,funname="scad",intercept=TRUE
     stop("wrong penalty function")
   if (intercept){
     p=p+1
+    exclude=c(exclude, F)
     x=cbind(x,rep(1,nyrow))
+    nxcol<-as.integer(ncol(x))
     #create observation matrix with the last column to be ones
     index1=1
     #intercept indicator
     if (is.null(beta))
-      beta=rep(0,nxcol+1)
+      beta=rep(0,nxcol)
     else
       beta=beta[!exclude]
   }
@@ -73,6 +76,7 @@ QICD<-function(y, x, beta=NULL, tau, lambda, a=3.7,funname="scad",intercept=TRUE
   df=NULL
   #none zero numbers for coefficients
   for (j in 1:nlambda){
+    beta_temp=rep(0,p)
     if(j==1){
       beta1=beta
     }else{
@@ -91,7 +95,6 @@ QICD<-function(y, x, beta=NULL, tau, lambda, a=3.7,funname="scad",intercept=TRUE
       if ((i>maxout)| (distance<thresh)) break
     }
     df=c(df,sum(abs(beta1)>thresh))
-    beta_temp=rep(0,p)
     beta_temp[!exclude]=beta1
     beta_final=cbind(beta_final,beta_temp)
     #final beta coefficients
@@ -100,7 +103,7 @@ QICD<-function(y, x, beta=NULL, tau, lambda, a=3.7,funname="scad",intercept=TRUE
   class(obj)="QICD"
   obj
 }
-
+#' @export
 allzero<-function(x)
 # are all x column values are zeros
 {

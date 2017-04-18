@@ -1,3 +1,4 @@
+#' @export
 checkloss<-function(res,tau=0.5) {
   # the check loss function for quantile regression
   Pres=(res+abs(res))/2
@@ -5,7 +6,7 @@ checkloss<-function(res,tau=0.5) {
   return(tau*Pres-(1-tau)*Nres)
 }
 
-
+#' @export
 QBIC<-function(y,X,beta,tau=0.5,const=6){
   #QBIC for high dimensional case
   size=dim(X)
@@ -17,6 +18,7 @@ QBIC<-function(y,X,beta,tau=0.5,const=6){
   return(log(sum(checkloss(y-X%*%beta,tau)))+log(p_n)*df*C_n/const)
 }
 
+#' @export
 QICD.BIC<-function(y, x, beta=NULL, const=6, tau, lambda, a=3.7,funname="scad",intercept=TRUE,thresh=1e-06,
                   maxin=100,maxout=20,plot.off=F,...)
   #x: input nxp matrix, of dimension nobs x nvars; each row is an observation vector. 

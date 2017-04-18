@@ -1,3 +1,4 @@
+//' @export for cpp
 #include <iostream>
 #include <math.h>
 #include <R.h>
